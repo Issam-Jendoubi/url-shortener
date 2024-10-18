@@ -1,0 +1,17 @@
+services:
+  shortener_dev_db:
+    image: "mysql/mysql-server:8.0"
+    restart: always
+    environment:
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: url_shortener
+      MYSQL_ROOT_PASSWORD: very_secret
+    command: --sql-mode=""
+    ports:
+      - 3306:3306
+    volumes:
+      - url-shortener-dev:/var/lib/mysql
+
+volumes:
+  url-shortener-dev:
